@@ -102,7 +102,7 @@ $(document).ready(function (){
                         movieImg(movies[i].id, "https://image.tmdb.org/t/p/w185"+movies[i].poster_path, movies[i].title);
                     }
                     else{
-                        movieImg(movies[i].id, "../img/noImage.png", movies[i].title);
+                        movieImg(movies[i].id, "./img/noImage.png", movies[i].title);
                     }
                 }
             }

@@ -136,7 +136,7 @@ $(document).ready(function () {
                         if (prodution[i].logo_path != null) {
                             produtionImg("https://image.tmdb.org/t/p/w185" + prodution[i].logo_path, prodution[i].name);
                         } else {
-                            produtionImg("../img/noImage-small.png", prodution[i].name);
+                            produtionImg("./img/noImage-small.png", prodution[i].name);
                         }
                     }
                 }
@@ -211,7 +211,7 @@ $(document).ready(function () {
                        img = $("<img>").attr("src", "https://image.tmdb.org/t/p/w500" + recommendations[i].poster_path);
                     }
                     else{
-                       img = $("<img>").attr("src", "../img/noImage-small.png");
+                       img = $("<img>").attr("src", "./img/noImage-small.png");
                     }
 
                     let link = $("<a>").attr("href", "movieDetails.html?id=" + recommendations[i].id);
