@@ -1,15 +1,15 @@
 $(document).ready(function (){
     let lista = $("#moviesList");
     let pesquisa = $('#searchField');
-    
+
     $('form').submit(function (e){
         e.preventDefault();
         $('#searchBtn').click();
     });
-    
+
     $('#searchBtn').click(function() {
         let search = pesquisa.val();
-            
+
         if(search != ""){
             $.ajax({
                 url: "https://api.themoviedb.org/3/search/movie",
@@ -35,7 +35,7 @@ $(document).ready(function (){
             $("<li style='display: block !important;'>").append(legenda).appendTo(lista);
         }
     });
-    
+
     $('#popular').click(function() {
         $.ajax({
             url: "https://api.themoviedb.org/3/movie/popular",
@@ -53,7 +53,7 @@ $(document).ready(function (){
             }
         });
     });
-    
+
     $('#top_rated').click(function() {
         $.ajax({
             url: "https://api.themoviedb.org/3/movie/top_rated",
@@ -71,7 +71,7 @@ $(document).ready(function (){
             }
         });
     });
-    
+
     $('#upcoming').click(function() {
         $.ajax({
             url: "https://api.themoviedb.org/3/movie/upcoming",
@@ -89,7 +89,7 @@ $(document).ready(function (){
             }
         });
     });
-    
+
     function Successed(request){
         lista.empty();
         let movies = request["results"];
@@ -102,7 +102,7 @@ $(document).ready(function (){
                         movieImg(movies[i].id, "https://image.tmdb.org/t/p/w185"+movies[i].poster_path, movies[i].title);
                     }
                     else{
-                        movieImg(movies[i].id, "noImage.jpg", movies[i].title);
+                        movieImg(movies[i].id, "../img/noImage.png", movies[i].title);
                     }
                 }
             }
@@ -112,19 +112,19 @@ $(document).ready(function (){
             $("<li style='display: block !important;'>").append(legenda).appendTo(lista);
         }
     }
-    
+
     function Error(error){
-        let legenda = $("<label>").text("Erro " + error.status + ": " + error.responseJSON.status_message);
+        let legenda = $("<label>").text("Error " + error.status + ": " + error.responseJSON.status_message);
         $("<li style='display: block !important;'>").append(legenda).appendTo(lista);
     }
-    
+
     function movieImg (id, url, title){
-        let link = $("<a>").attr("href", "filmeDetails.html?id=" + id);
+        let link = $("<a>").attr("href", "movieDetails.html?id=" + id);
         let thumbnail = $("<img>").attr("src", url);
         let legenda = $("<label>").text(title);
         $("<li>").append(link.append(thumbnail).append("<br>").append("<br>").append(legenda)).appendTo(lista);
     }
-    
+
     //===========
     //Back to top
     let btn = $('.backtoTop');
@@ -140,4 +140,3 @@ $(document).ready(function (){
         $('html, body').animate({ scrollTop: 0 }, 'slow');
     });
 });
-
